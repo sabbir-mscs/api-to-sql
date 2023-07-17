@@ -21,15 +21,15 @@ async function storeAPIData() {
     await sql.connect(config);
 
     // Create the database table
-    // await sql.query(`
-    //   CREATE TABLE API_Data (
-    //     id VARCHAR(50) PRIMARY KEY,
-    //     typicode_id INT,
-    //     userId INT,
-    //     title VARCHAR(100),
-    //     description VARCHAR(MAX)
-    //   )
-    // `);
+    await sql.query(`
+      CREATE TABLE API_Data (
+        id VARCHAR(50) PRIMARY KEY,
+        typicode_id INT,
+        userId INT,
+        title VARCHAR(100),
+        description VARCHAR(MAX)
+      )
+    `);
 
     // Retrieve API data
     const apiURL = "https://jsonplaceholder.typicode.com/posts";
@@ -55,4 +55,6 @@ async function storeAPIData() {
   }
 }
 
-storeAPIData();
+// storeAPIData();
+
+setInterval(storeAPIData, 2000);
